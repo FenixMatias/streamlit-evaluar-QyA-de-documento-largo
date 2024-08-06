@@ -55,10 +55,8 @@ def generate_response(uploaded_file, openai_api_key, query_text, response_text):
 
         return response
 
-    except openai.error.OpenAIError as e:
-        st.error(f"Error con la API de OpenAI: {e}")
     except Exception as e:
-        st.error(f"Error: {e}")
+        st.error(f"Se produjo un error: {e}")
     return None
 
 st.set_page_config(page_title="Evaluar una aplicación RAG")
@@ -118,4 +116,3 @@ if len(result):
     st.info(result[0]["predictions"][0]["result"])
     st.write("Por lo tanto, la respuesta de la AI App fue")
     st.info(result[0]["graded_outputs"][0]["results"])
-
